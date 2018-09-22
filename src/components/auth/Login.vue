@@ -1,6 +1,7 @@
 <template>
   <div>
 		<h1>Login</h1>
+		{{ myTest }}
 		<form>
 			<basic-form @basicFormSubmitted="login" />
 		</form>
@@ -15,9 +16,14 @@
 		components: {
 			BasicForm
 		},
+		computed: {
+			myTest(){
+				return this.$store.getters.email;
+			}
+		},
 		methods:{
 			login(email, password){
-				// make ajax call to login
+				this.$store.commit('changeText', email)
 			}
 		}
 	}
