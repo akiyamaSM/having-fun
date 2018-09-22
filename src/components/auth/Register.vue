@@ -2,7 +2,7 @@
   <div>
   		<h1>Register</h1>
   		<form>
-			<BasicFrom />
+			<basic-form @basicFormSubmitted="register" />
   		</form>
   </div>		
 </template>
@@ -14,6 +14,11 @@
 	export default {
 		components: {
 			BasicForm
+		},
+		methods: {
+			register(email, password){
+
+			}
 		}
 	}
 </script>

@@ -2,7 +2,7 @@
   <div>
 		<h1>Login</h1>
 		<form>
-			<BasicFrom />
+			<basic-form @basicFormSubmitted="login" />
 		</form>
   </div>		
 </template>
@@ -14,6 +14,11 @@
 	export default {
 		components: {
 			BasicForm
+		},
+		methods:{
+			login(email, password){
+				// make ajax call to login
+			}
 		}
 	}
 </script>
