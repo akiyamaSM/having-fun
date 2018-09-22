@@ -15,8 +15,27 @@ const router = new VueRouter({
 	mode: 'history'
 })
 
-
 import {store} from './store/store'
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.authenticated)) {
+    if (!store.getters.isLogged) {
+      next({path: '/login'})
+    } else {
+      next()
+    }
+  } else if (to.matched.some(record => record.meta.guest)) {
+    if (store.getters.isLogged) {
+      next({path: '/'})
+    } else {
+      next()
+    }
+  } else {
+    next() // make sure to always call next()!
+  }
+})
+
+
 
 Vue.config.productionTip = false
 

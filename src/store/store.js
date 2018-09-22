@@ -7,11 +7,11 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {     
-       test : 'Bla Bla'
+       is_logged: localStorage.getItem('single_app_is_logged') || null
   },
   getters: {
-  	email(state){
-  		return state.test
+  	isLogged(state){
+  		return state.is_logged != null
   	}
   },
   mutations: {
@@ -20,6 +20,14 @@ export const store = new Vuex.Store({
   	}
   },
   actions: {
+  	login(context, user){
+		context.state.is_logged = true
+		localStorage.setItem('single_app_is_logged', true)
 
+  	},
+  	logout(context){
+  		context.state.is_logged = null
+  		window.localStorage.removeItem('single_app_is_logged')
+  	}
   }
 });
