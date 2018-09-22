@@ -17,7 +17,7 @@
 		},
 		methods:{
 			login(email, password){
-				if(email == 'inanielhoussain@gmail.com' && password == '123456'){
+				if(email == 'inanielhoussain@gmail.com' && password == 'pass'){
 					this.$store.dispatch('login', {
 						email,
 						password
