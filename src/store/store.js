@@ -23,11 +23,14 @@ export const store = new Vuex.Store({
   actions: {
   	login(context, user){
 
-  		axios.get('http://www.mocky.io/v2/5ba77af83200006800e2e962')
-  			.then(function(response){
+  		return new Promise((resolve, reject) => {
+  			axios.get('http://www.mocky.io/v2/5ba77af83200006800e2e962')
+  			.then( response => {
   				context.state.is_logged = true
 				localStorage.setItem('single_app_is_logged', response.data.token)
-  			}).catch((error) => console.error(error))
+				resolve(response)
+  			}).catch( error => reject(error))
+  		})
 
   	},
   	logout(context){
