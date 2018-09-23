@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -21,8 +22,12 @@ export const store = new Vuex.Store({
   },
   actions: {
   	login(context, user){
-		context.state.is_logged = true
-		localStorage.setItem('single_app_is_logged', true)
+
+  		axios.get('http://www.mocky.io/v2/5ba77af83200006800e2e962')
+  			.then(function(response){
+  				context.state.is_logged = true
+				localStorage.setItem('single_app_is_logged', response.data.token)
+  			}).catch((error) => console.error(error))
 
   	},
   	logout(context){
