@@ -35,7 +35,9 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+import Element from  'element-ui'
 
+Vue.use(Element)
 
 Vue.config.productionTip = false
 
